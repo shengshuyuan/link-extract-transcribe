@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "save_mode": "preview",
+  "auto_new_only_authorized": false,
+  "fallback_directory": "00-inbox",
+  "categories": [
+    {
+      "name": "工作方法",
+      "directory": "20-wiki/工作方法",
+      "description": "会议、协作、复盘、项目跟进等工作方法",
+      "keywords": [
+        "会议",
+        "复盘",
+        "行动项",
+        "协作"
+      ]
+    },
+    {
+      "name": "产品与技术",
+      "directory": "20-wiki/产品与技术",
+      "description": "产品设计、开发、技术工具与操作说明",
+      "keywords": [
+        "产品",
+        "技术",
+        "开发",
+        "工具"
+      ]
+    },
+    {
+      "name": "学习与成长",
+      "directory": "20-wiki/学习与成长",
+      "description": "课程、读书、学习方法与个人成长",
+      "keywords": [
+        "学习",
+        "课程",
+        "读书"
+      ]
+    },
+    {
+      "name": "生活记录",
+      "directory": "20-wiki/生活记录",
+      "description": "生活经验、个人兴趣与日常观察",
+      "keywords": [
+        "生活",
+        "兴趣",
+        "日常"
+      ]
+    }
+  ]
+}
