@@ -75,7 +75,7 @@ python scripts/transcript.py input.mp4 outputs/audio-001 --model-dir /path/to/lo
 
 ## 测试和打包
 
-开发测试需安装网页依赖和 PyYAML；测试使用临时目录与模拟响应，不请求真实文章或下载模型。
+开发测试请先下载或克隆完整仓库源码；技能安装包不含 tests 和 examples。开发测试需安装网页依赖和 PyYAML；测试使用临时目录与模拟响应，不请求真实文章或下载模型。
 
 ```sh
 python3 -m venv .venv

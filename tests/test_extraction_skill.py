@@ -100,4 +100,27 @@ class RuntimeTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as t,patch.object(runtime.Path,'home',return_value=Path(t)),patch.object(runtime,'sys',fake),patch.object(runtime.os,'execv') as execute:
    runtime.use_web_environment('/skill/doctor.py');execute.assert_not_called();self.assertFalse((Path(t)/'.workbuddy').exists())
 
+
+
+class PackagingTests(unittest.TestCase):
+ def test_install_archive_document_links_resolve(self):
+  import re
+  from zipfile import ZipFile
+  builder=module('build_package')
+  with tempfile.TemporaryDirectory() as temp:
+   target=builder.build_archive(Path(temp)/'skill.zip')
+   with ZipFile(target) as archive:
+    self.assertIsNone(archive.testzip())
+    readme=archive.read('link-extract-transcribe/README.md').decode('utf-8')
+    names=set(archive.namelist())
+    self.assertEqual(len(names),11)
+    self.assertIn('https://github.com/shengshuyuan/link-extract-transcribe/tree/main/examples/obsidian-starter',readme)
+    self.assertIn('https://github.com/shengshuyuan/link-extract-transcribe/raw/refs/heads/main/dist/link-extract-transcribe-workbuddy.zip',readme)
+    for target in re.findall(r'\]\(([^)]+)\)',readme):
+     if not target.startswith(('https://','http://','#')):
+      self.assertIn('link-extract-transcribe/'+target,names)
+ def test_repository_readme_links_stay_relative(self):
+  readme=(ROOT.parent/'README.md').read_text(encoding='utf-8')
+  self.assertIn('](examples/obsidian-starter)',readme)
+
 if __name__=='__main__':unittest.main()
